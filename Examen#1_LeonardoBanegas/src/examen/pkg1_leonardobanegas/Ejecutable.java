@@ -41,5 +41,9 @@ public class Ejecutable extends Archivo {
     public void Ejecutar() {
 
     }
-    
+
+    @Override
+    public void mod(String linea) {
+    }
+
 }

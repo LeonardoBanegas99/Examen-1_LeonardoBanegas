@@ -1,6 +1,7 @@
 package examen.pkg1_leonardobanegas;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -245,10 +246,10 @@ public class Examen_1GUI extends javax.swing.JFrame {
         this.setVisible(true);
         jframe2.setVisible(false);
     }//GEN-LAST:event_btn_regresarMouseClicked
-
+    private String usuario;
     private void btn_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearMouseClicked
         String nombre = tf_nombre.getText();
-        String usuario = tf_usuario.getText();
+        usuario = tf_usuario.getText();
         int capacidad = Integer.parseInt(tf_capacidad.getText());
         Carpeta carpetaraiz = new Carpeta("root", 50, new Date(), new Date());
 
@@ -259,7 +260,7 @@ public class Examen_1GUI extends javax.swing.JFrame {
         so = new SistemaOperativo(nombre, usuario, capacidad, carpetaraiz);
         System.out.println(so);
         DefaultListModel modelolista = new DefaultListModel();
-
+        carpactual = so.getCarpetaraiz();
         textarea.setText(nombre + "/" + so.getCarpetaraiz().getNombre());
 
     }//GEN-LAST:event_btn_crearMouseClicked
@@ -280,13 +281,14 @@ public class Examen_1GUI extends javax.swing.JFrame {
             Element le = e.getElement(numlineas - 1);
             int lineainicio = le.getStartOffset();
             int lineafinal = le.getEndOffset();
-            String texto = "";
+            String linea = "";
             try {
-                texto = documento.getText(lineainicio, lineafinal-lineainicio);
+                linea = documento.getText(lineainicio, lineafinal - lineainicio);
             } catch (BadLocationException ex) {
                 Logger.getLogger(Examen_1GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(texto);
+            System.out.println(linea);
+            mkdir(linea);
         }
     }//GEN-LAST:event_textareaKeyPressed
 
@@ -341,9 +343,46 @@ public class Examen_1GUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_usuario;
     // End of variables declaration//GEN-END:variables
 
+    private Carpeta carpactual;
 
+    private void mkdir(String linea) {
+        ArrayList<String> letras = new ArrayList();
+        String[] sepa;
+        String[] g;
+        letras.add(linea);
+        if (letras.get(0).contains("mkdir")) {
+            sepa = linea.split(" ");
+            String s = sepa[3];
+            g = s.split("\n");
+            int num = Integer.parseInt(g[0]);
+            carpactual.getArchivos().add(new Carpeta(sepa[2], num, new Date(), new Date()));
+        } else if (letras.get(0).contains("cat")) {
+            if (letras.get(0).contains(".txt")) {
+                sepa = linea.split(" ");
+                textarea.setText(usuario + "/" + carpactual.getNombre() + "\n"
+                        + "Ingrese texto: \n");
+                String texto = textarea.getText();
+                carpactual.getArchivos().add(new ArchivodeTexto(texto, sepa[2], 0, new Date(), new Date()));
+            } else if (letras.get(0).contains(".exec")) {
 
+            } else {
+                textarea.setText("Comando Erroneo");
+            }
 
+        } else if (letras.get(0).contains("mod")) {
+            sepa = linea.split(" ");
+            carpactual.mod(linea);
+            
+        } else if (letras.get(0).contains("cd")) {
+
+        } else if (letras.get(0).contains("ls")) {
+
+        } else if (letras.get(0).contains("del")) {
+
+        } else if (letras.get(0).contains("exec")) {
+
+        }
+
+    }
 
 }
-

@@ -3,7 +3,7 @@ package examen.pkg1_leonardobanegas;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Carpeta extends Archivo{
+public class Carpeta extends Archivo {
 
     private ArrayList<Archivo> archivos = new ArrayList();
 
@@ -31,5 +31,23 @@ public class Carpeta extends Archivo{
     public void Ejecutar() {
 
     }
-    
-}
+
+    @Override
+    public void mod(String linea) {
+        String[] sepa;
+        sepa = linea.split(" ");
+        String s = sepa[2];
+        for (int i = 0; i < this.getArchivos().size(); i++) {
+            if (this.getArchivos().get(i).getNombre().equals(s)) {
+                if (this.getArchivos().get(i) instanceof Carpeta) {
+                     
+                } else if () {
+
+                } else if () {
+
+                }
+
+            }
+        }
+
+    }

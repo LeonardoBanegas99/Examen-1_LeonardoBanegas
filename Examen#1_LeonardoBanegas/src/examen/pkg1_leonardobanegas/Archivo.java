@@ -55,6 +55,8 @@ public abstract class Archivo {
     public String toString() {
         return "Archivo{" + "nombre=" + nombre + ", tamano=" + tamano + ", fechacre=" + fechacre + ", fechamod=" + fechamod + '}';
     }
-    
+
     public abstract void Ejecutar();
+
+    public abstract void mod(String linea);
 }
