@@ -14,4 +14,9 @@ public class ArchivodeTexto extends Archivo {
         this.texto = texto;
     }
 
+    @Override
+    public void Ejecutar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

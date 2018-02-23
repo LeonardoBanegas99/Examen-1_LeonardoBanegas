@@ -2,7 +2,7 @@ package examen.pkg1_leonardobanegas;
 
 import java.util.Date;
 
-public class Archivo {
+public abstract class Archivo {
 
     private String nombre;
     private int tamano;
@@ -56,5 +56,5 @@ public class Archivo {
         return "Archivo{" + "nombre=" + nombre + ", tamano=" + tamano + ", fechacre=" + fechacre + ", fechamod=" + fechamod + '}';
     }
     
-    
+    public abstract void Ejecutar();
 }

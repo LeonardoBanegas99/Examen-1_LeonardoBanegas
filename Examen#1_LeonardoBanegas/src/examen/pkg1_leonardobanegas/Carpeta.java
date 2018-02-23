@@ -26,5 +26,10 @@ public class Carpeta extends Archivo{
     public String toString() {
         return "Carpeta{" + "archivos=" + archivos + '}';
     }
+
+    @Override
+    public void Ejecutar() {
+
+    }
     
 }

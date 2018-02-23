@@ -36,5 +36,10 @@ public class Ejecutable extends Archivo {
     public String toString() {
         return "Ejecutable{" + "texto=" + texto + ", so=" + so + '}';
     }
+
+    @Override
+    public void Ejecutar() {
+
+    }
     
 }
