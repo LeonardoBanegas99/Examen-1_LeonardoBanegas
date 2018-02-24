@@ -356,6 +356,7 @@ public class Examen_1GUI extends javax.swing.JFrame {
             g = s.split("\n");
             int num = Integer.parseInt(g[0]);
             carpactual.getArchivos().add(new Carpeta(sepa[2], num, new Date(), new Date()));
+            textarea.setText(usuario + "/" + carpactual.getNombre());
         } else if (letras.get(0).contains("cat")) {
             if (letras.get(0).contains(".txt")) {
                 sepa = linea.split(" ");
@@ -368,7 +369,7 @@ public class Examen_1GUI extends javax.swing.JFrame {
             } else {
                 textarea.setText("Comando Erroneo");
             }
-
+            textarea.setText(usuario + "/" + carpactual.getNombre());
         } else if (letras.get(0).contains("mod")) {
             sepa = linea.split(" ");
             carpactual = carpactual.mod(linea);
@@ -382,10 +383,11 @@ public class Examen_1GUI extends javax.swing.JFrame {
                 }
             }
             textarea.setText(usuario + "/" + carpactual.getNombre());
-            String texto = textarea.getText();
         } else if (letras.get(0).contains("ls")) {
-            sepa = linea.split(" ");
-
+            for (int i = 0; i < carpactual.getArchivos().size(); i++) {
+                textarea.setText(i + 1 + ")" + carpactual.getArchivos().get(i).toString());
+            }
+            String m = textarea.getText();
         } else if (letras.get(0).contains("del")) {
             sepa = linea.split(" ");
             for (int i = 0; i < so.getCarpetaraiz().getArchivos().size(); i++) {
@@ -393,8 +395,9 @@ public class Examen_1GUI extends javax.swing.JFrame {
                     so.getCarpetaraiz().getArchivos().remove(i);
                 }
             }
+            textarea.setText(usuario + "/" + carpactual.getNombre());
         } else if (letras.get(0).contains("exec")) {
-
+          
         }
 
     }
