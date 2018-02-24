@@ -43,7 +43,12 @@ public class Ejecutable extends Archivo {
     }
 
     @Override
-    public void mod(String linea) {
+    public Carpeta mod(String linea) {
+        return null;
     }
 
+    @Override
+    public String mod(String linea, int x) {
+        return "";
+    }
 }

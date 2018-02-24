@@ -1,6 +1,7 @@
 package examen.pkg1_leonardobanegas;
 
 import java.util.Date;
+import javax.swing.JTextArea;
 
 public abstract class Archivo {
 
@@ -58,5 +59,8 @@ public abstract class Archivo {
 
     public abstract void Ejecutar();
 
-    public abstract void mod(String linea);
+    public abstract Carpeta mod(String linea);
+
+    public abstract String mod(String linea, int x);
+    
 }

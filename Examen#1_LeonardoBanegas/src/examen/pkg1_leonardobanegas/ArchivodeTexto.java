@@ -1,6 +1,7 @@
 package examen.pkg1_leonardobanegas;
 
 import java.util.Date;
+import javax.swing.JTextArea;
 
 public class ArchivodeTexto extends Archivo {
 
@@ -20,7 +21,13 @@ public class ArchivodeTexto extends Archivo {
     }
 
     @Override
-    public void mod(String linea) {
+    public Carpeta mod(String linea) {
+        return null;
+    }
+
+    @Override
+    public String mod(String linea, int x) {
+       return "Ingrese texto: \n";
     }
 
 }

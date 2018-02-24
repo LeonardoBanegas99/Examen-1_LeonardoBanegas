@@ -371,14 +371,28 @@ public class Examen_1GUI extends javax.swing.JFrame {
 
         } else if (letras.get(0).contains("mod")) {
             sepa = linea.split(" ");
-            carpactual.mod(linea);
-            
+            carpactual = carpactual.mod(linea);
+            textarea.setText(usuario + "" + carpactual.getNombre() + "\n" + carpactual.mod(linea, 1));
+            String texto2 = textarea.getText();
         } else if (letras.get(0).contains("cd")) {
-
+            sepa = linea.split(" ");
+            for (int i = 0; i < so.getCarpetaraiz().getArchivos().size(); i++) {
+                if (so.getCarpetaraiz().getArchivos().get(i).getNombre().equals(sepa[1])) {
+                    carpactual = ((Carpeta) so.getCarpetaraiz().getArchivos().get(i));
+                }
+            }
+            textarea.setText(usuario + "/" + carpactual.getNombre());
+            String texto = textarea.getText();
         } else if (letras.get(0).contains("ls")) {
+            sepa = linea.split(" ");
 
         } else if (letras.get(0).contains("del")) {
-
+            sepa = linea.split(" ");
+            for (int i = 0; i < so.getCarpetaraiz().getArchivos().size(); i++) {
+                if (so.getCarpetaraiz().getArchivos().get(i).getNombre().equals(sepa[1])) {
+                    so.getCarpetaraiz().getArchivos().remove(i);
+                }
+            }
         } else if (letras.get(0).contains("exec")) {
 
         }
